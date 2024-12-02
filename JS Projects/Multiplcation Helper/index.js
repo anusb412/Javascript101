@@ -8,7 +8,7 @@ function randomNums() {
 }
 
 function MultipleNums() {
-    let answer
+    
 }
 
 
