@@ -7,11 +7,12 @@ function rollDice() {
     const images = [];
 
     for(let i = 0; i < numOfDice; i++) {
-        const value = Math.floor(Math.random() * 6) + 1;
-        values.push(value);
-        images.push(`<img src="dice_images/${value}.png">`)
+        const value = Math.floor(Math.random() * 6) + 1; // generates num 1-5
+        values.push(value);                              // adds num to array
+        images.push(`<img src="dice_images/${value}.png">`) //add imgs to array
     }
 
-    diceResult.textContent = `dice ${values.join(", ")}`
+    // displays nums and pics 
+    diceResult.textContent = `dice ${values.join(", ")}` 
     diceImages.innerHTML = images.join("");
 }
