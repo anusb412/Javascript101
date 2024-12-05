@@ -25,36 +25,27 @@ const c = canvas.getContext("2d");
 
 
 // // //Arc or Circle
-// // // c.beginPath();
-// // // c.arc(300, 300, 30, 0, Math.PI * 2, false);
-// // // c.strokeStyle = "blue"
-// // // c.stroke();
+// // c.beginPath();
+// // c.arc(300, 300, 30, 0, Math.PI * 2, false);
+// // c.strokeStyle = "blue"
+// // c.stroke();
 
-// for(let i = 0; i < 30; i++) {
-//     let x = Math.random() * window.innerWidth;
-//     let y = Math.random() * window.innerHeight;
+// // for(let i = 0; i < 30; i++) {
+// //     let x = Math.random() * window.innerWidth;
+// //     let y = Math.random() * window.innerHeight;
 
-//     c.beginPath();
-//     c.arc(x, y, 30, 0, Math.PI * 2, false);
-//     c.strokeStyle = "blue"
-//     c.stroke();
-// }
+// //     c.beginPath();
+// //     c.arc(x, y, 30, 0, Math.PI * 2, false);
+// //     c.strokeStyle = "blue"
+// //     c.stroke();
+// // }
 
 // // //randomize colors of each circle
 
 
-// CIRCLE MOVING
+// //CIRCLE MOVING
 
-function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
-    
-function Circle(x, y , dx, dy, radius) {
+ function Circle(x, y, dx, dy, radius) {
     this.x = x;
     this.y = y;
     this.dx = dx;
@@ -64,40 +55,46 @@ function Circle(x, y , dx, dy, radius) {
     this.draw = function() {
         c.beginPath();
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        c.strokeStyle = getRandomColor();
-        c.stroke();  
-        c.fillStyle 
-        c.fill();
+        c.strokeStyle = "blue"
+        c.stroke();
     }
+
     this.update = function() {
         if(this.x + this.radius > innerWidth || this.x - this.radius < 0) {
             this.dx = -this.dx;
-            } 
+        }
         if(this.y + this.radius > innerHeight || this.y - this.radius < 0) {
-        this.dy = -this.dy;
-        } 
+            this.dy = -this.dy;
+        }
         this.x += this.dx;
         this.y += this.dy;
+
         this.draw();
     }
-}
+ }
 
-const circleArray = [];
+ 
 
-for(let i = 0; i < 100; i++) {
-    const radius = 30;
-    let x = Math.random() * (innerWidth - radius * 2) + radius;
-    let y = Math.random() * (innerHeight - radius * 2) + radius;
-    let dy = (Math.random() - 0.5 * 2);
-    let dx = (Math.random() - 0.5) * 2;
-    circleArray.push(new Circle(x, y, dx, dy, radius));
-}
+    let circleArray = []
+    for(let i = 0; i < 100; i++) {
+        let x = Math.random() * innerWidth;
+        let y = Math.random() * innerHeight;
+        let dx = (Math.random() - .5) * 8;
+        let dy = (Math.random() - .5) * 8;
+        let radius = 30;
+        circleArray.push(new Circle(x, y, dx, dy, radius));
+    }
 
-function animate() {
-    requestAnimationFrame(animate);
-    c.clearRect(0 , 0 , innerWidth, innerHeight)   
-    for(let i = 0; i < circleArray.length; i++) {
-        circleArray[i].update();
-    }  
-};
-animate();
+
+  
+
+    function animate() {
+        requestAnimationFrame(animate);
+        c.clearRect(0,0, innerWidth, innerHeight);
+
+        for(let i = 0; 1 < circleArray.length; i++) {
+            circleArray[i].update();
+        }
+    }
+
+    animate();
